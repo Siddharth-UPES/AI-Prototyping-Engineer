@@ -3,7 +3,7 @@
 
 ---
 
-## 🎯 Goal
+## Goal
 
 Enhance the existing **LLM-powered Chat with PDFs (RAG system)** by adding  
 **Multi-Document Reasoning** capability.
@@ -15,16 +15,16 @@ This allows the system to:
 
 ---
 
-## 🚀 Advanced Capability Chosen
+## Advanced Capability Chosen
 
-### ✅ Multi-Document Reasoning
+### Multi-Document Reasoning
 
 Instead of limiting answers to a single PDF, the system now reasons over  
 **multiple documents simultaneously** using a shared vector space.
 
 ---
 
-## 🧠 Why This Capability Was Chosen
+## Why This Capability Was Chosen
 
 Let’s be real — in the real world, answers don’t live in one file.
 
@@ -40,7 +40,7 @@ Let’s be real — in the real world, answers don’t live in one file.
 
 ---
 
-## ⚙️ How It Works (High-Level)
+## How It Works (High-Level)
 
 1. User uploads **multiple PDFs**
 2. All documents are:
@@ -54,7 +54,7 @@ Let’s be real — in the real world, answers don’t live in one file.
 
 ---
 
-## 🔄 Example Scenario
+## Example Scenario
 
 **Documents Uploaded:**
 - Company Policy PDF
@@ -70,7 +70,7 @@ Let’s be real — in the real world, answers don’t live in one file.
 
 ---
 
-## ⚖️ Trade-Offs
+##  Trade-Offs
 
 | Trade-Off | Explanation |
 |--------|------------|
@@ -83,24 +83,24 @@ Power comes with cost. We manage it, not avoid it.
 
 ---
 
-## 🚧 Limitations
+##  Limitations
 
-### 1️⃣ Context Window Constraints
+### 1️ Context Window Constraints
 - LLMs can only process limited tokens
 - Requires careful **top-k tuning**
 
-### 2️⃣ Source Attribution Complexity
+### 2️ Source Attribution Complexity
 - Harder to clearly reference *which document said what*
 - Needs future improvement (citations per chunk)
 
-### 3️⃣ Scaling Challenges
+### 3️ Scaling Challenges
 - Large document collections require:
   - Persistent vector DB
   - Sharding or metadata filtering
 
 ---
 
-## 🔮 Future Improvements
+##  Future Improvements
 
 - Per-document metadata filtering
 - Document-level confidence scoring
@@ -109,7 +109,7 @@ Power comes with cost. We manage it, not avoid it.
 
 ---
 
-## 🧠 Key Insight
+##  Key Insight
 
 Single-document QA is a demo.  
 **Multi-document reasoning is production.**
@@ -119,9 +119,4 @@ to a **real knowledge assistant** capable of handling real-world complexity.
 
 ---
 
-## 👤 Author
-
-**Siddharth Kumar**  
-MCA (AI & ML)  
-LLM & RAG Systems Engineer
 
