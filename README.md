@@ -1,37 +1,4 @@
-Short answer first (so there’s no confusion):
-
-👉 **Make ONE single README.md for the entire repo.**
-Not multiple READMEs per task.
-
-This is exactly what interviewers expect:
-**one main README that shows you can connect all tasks into one coherent system.**
-
-Your current project already satisfies **Task 1–4 in a single app**, so your README should be structured by **sections**, not separate files.
-
-Think of it like a mini technical report.
-
----
-
-Now I’ll explain clearly how you should organize it.
-
-Your GitHub repo should look like this:
-
-```
-AI-PDF-QA-RAG/
-│
-├── app.py
-├── requirements.txt
-├── README.md   <-- SINGLE README (very important)
-└── faiss_index/ (generated)
-```
-
-Only **one README.md**.
-
-Inside that README, you divide by tasks:
-
----
-
-# README Structure (Follow This Exactly)
+# README Structure 
 
 ## 1. Project Overview
 
