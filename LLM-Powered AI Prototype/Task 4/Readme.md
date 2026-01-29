@@ -126,7 +126,7 @@ User → Upload PDF → Text Extraction → Chunking → Embeddings (MiniLM) →
 
 ##  Deployment & Live Demo
 
-- **Live Demo:** [Streamlit Cloud Link](https://ml-engineer-assessment-mt5l9ai3jmk82s2hqdndym.streamlit.app/)  
+- **Live Demo:** [Streamlit Cloud Link](https://ai-prototyping-engineer-sb6fnaxbuqnfv33sd2t6yc.streamlit.app/)  
 - **Local Run Instructions:**
 ```bash
 git clone <repo-url>
