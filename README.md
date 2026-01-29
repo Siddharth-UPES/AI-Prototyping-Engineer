@@ -105,28 +105,40 @@ User Question
 
 Low-relevance chunks are discarded before answer generation.
 
-```python
-SIM_THRESHOLD = 0.35
+### Behavior
 
-Behavior:
-Chunks below the threshold are ignored
-If no chunk crosses the threshold, generation is skipped
-The user is asked to rephrase the question
-This prevents low-confidence or fabricated answers.
+- Chunks below the similarity threshold are ignored  
+- If no chunk crosses the threshold, answer generation is skipped  
+- The user is asked to rephrase the question  
 
-Guardrail 2 – Source-Grounded Prompt Constraint
-The prompt strictly enforces document-only answering.
-If the answer is not present, say:
-"The answer is not available in the document."
-This ensures the model does not hallucinate when relevant information is missing.
+This mechanism prevents **low-confidence, irrelevant, or fabricated answers**.
 
+---
 
-Improved Response Behavior
-Without Guardrails
-LLM may generate a confident but incorrect explanation
-With Guardrails Enabled
-The answer is not available in the document.
-Responses are transparent, grounded, and source-aware.
+## 🧱 Guardrail 2 – Source-Grounded Prompt Constraint
+
+The prompt strictly enforces **document-only answering**.
+
+### Prompt Rule
+
+> If the answer is not present, say:  
+> **"The answer is not available in the document."**
+
+This ensures the model does **not hallucinate** when relevant information is missing from the PDF.
+
+---
+
+## 📊 Improved Response Behavior
+
+### Without Guardrails
+
+- The LLM may generate a **confident but incorrect explanation**
+
+### With Guardrails Enabled
+
+- **"The answer is not available in the document."**
+
+Responses are **transparent, grounded, and source-aware**.
 
 ⚡ TASK 3 – Rapid Iteration Challenge
 Advanced Capability Added
