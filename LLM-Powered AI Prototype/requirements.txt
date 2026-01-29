@@ -4,6 +4,7 @@ torch==2.10.0
 torchvision==0.20.1
 transformers==4.44.2
 faiss-cpu==1.7.4
+pypdf
 numpy==1.26.4
 typing-extensions==4.11.0
 openai==1.31.0
