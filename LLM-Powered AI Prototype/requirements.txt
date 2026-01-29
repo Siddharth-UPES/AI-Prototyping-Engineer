@@ -1,8 +1,0 @@
-streamlit
-pypdf
-sentence-transformers
-torch
-transformers
-faiss-cpu
-numpy
-openai
