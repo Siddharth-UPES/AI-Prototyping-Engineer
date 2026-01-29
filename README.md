@@ -97,7 +97,6 @@ User Question
 3. Missing information in the uploaded PDF  
 4. Over-short or unconstrained answers  
 
----
 
 ### Guardrails Implemented
 
@@ -113,9 +112,9 @@ Low-relevance chunks are discarded before answer generation.
 
 This mechanism prevents **low-confidence, irrelevant, or fabricated answers**.
 
----
 
-## 🧱 Guardrail 2 – Source-Grounded Prompt Constraint
+
+#### Guardrail 2 – Source-Grounded Prompt Constraint
 
 The prompt strictly enforces **document-only answering**.
 
@@ -126,7 +125,6 @@ The prompt strictly enforces **document-only answering**.
 
 This ensures the model does **not hallucinate** when relevant information is missing from the PDF.
 
----
 
 ## 📊 Improved Response Behavior
 
@@ -139,6 +137,8 @@ This ensures the model does **not hallucinate** when relevant information is mis
 - **"The answer is not available in the document."**
 
 Responses are **transparent, grounded, and source-aware**.
+
+---
 
 ## TASK 3 – Rapid Iteration Challenge
 
