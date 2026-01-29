@@ -2,7 +2,7 @@
 
 ---
 
-## ⚠️ Problem Statement
+##  Problem Statement
 
 Large Language Models (LLMs) are powerful, fluent, and confident.  
 That’s the danger.
@@ -17,35 +17,35 @@ This behavior is known as **hallucination**, and controlling it is critical in a
 
 ---
 
-## 🔍 Causes of Hallucination in This System
+##  Causes of Hallucination in This System
 
 In a **Chat with PDFs (RAG-based system)**, hallucinations can arise due to:
 
-### 1️⃣ Missing or Weak Retrieval Context
+### 1️ Missing or Weak Retrieval Context
 - Relevant information is not retrieved from the vector database
 - Poor similarity match between query and document chunks
 
-### 2️⃣ Overconfidence of the LLM
+### 2️ Overconfidence of the LLM
 - LLM attempts to “fill the gaps” using its pretrained knowledge
 - Generates plausible but unsupported answers
 
-### 3️⃣ Ambiguous or Out-of-Scope Questions
+### 3️ Ambiguous or Out-of-Scope Questions
 - User asks questions not covered in the uploaded PDF
 - Model responds instead of refusing
 
-### 4️⃣ Long or Noisy Documents
+### 4️ Long or Noisy Documents
 - Important facts buried deep inside the document
 - Retrieval misses key sections
 
 ---
 
-## 🛡️ Guardrails Implemented
+##  Guardrails Implemented
 
 To control hallucinations and improve answer quality, the following guardrails are implemented:
 
 ---
 
-### ✅ Guardrail 1: Source-Grounded Answers (RAG Enforcement)
+###  Guardrail 1: Source-Grounded Answers (RAG Enforcement)
 
 **What is done:**
 - The LLM receives only the retrieved document chunks as context
@@ -62,7 +62,7 @@ To control hallucinations and improve answer quality, the following guardrails a
 
 ---
 
-### ✅ Guardrail 2: Confidence / Similarity Threshold
+###  Guardrail 2: Confidence / Similarity Threshold
 
 **What is done:**
 - FAISS similarity score is checked before generation
@@ -77,7 +77,7 @@ To control hallucinations and improve answer quality, the following guardrails a
 
 ---
 
-### ✅ (Optional) Guardrail 3: Prompt-Level Refusal Policy
+###  (Optional) Guardrail 3: Prompt-Level Refusal Policy
 
 **What is done:**
 - Prompt explicitly instructs the model to refuse guessing
@@ -89,9 +89,9 @@ To control hallucinations and improve answer quality, the following guardrails a
 
 ---
 
-## 📊 Examples of Improved Responses
+##  Examples of Improved Responses
 
-### ❌ Before Guardrails (Hallucination)
+###  Before Guardrails (Hallucination)
 
 **User Question:**  
 > What is the author’s conclusion about climate change?
@@ -99,12 +99,12 @@ To control hallucinations and improve answer quality, the following guardrails a
 **Model Answer:**  
 > The author strongly believes climate change is caused by human activities and suggests policy reforms.
 
-⚠️ *Issue:*  
+ *Issue:*  
 The document never mentioned climate change.
 
 ---
 
-### ✅ After Guardrails (Controlled Response)
+###  After Guardrails (Controlled Response)
 
 **Improved Answer:**  
 > **The answer is not available in the document.**
@@ -115,7 +115,7 @@ The document never mentioned climate change.
 
 ---
 
-### ❌ Before Guardrails
+###  Before Guardrails
 
 **User Question:**  
 > What algorithm does the system use for ranking pages?
@@ -123,12 +123,12 @@ The document never mentioned climate change.
 **Model Answer:**  
 > The system uses PageRank and HITS algorithms.
 
-⚠️ *Issue:*  
+ *Issue:*  
 Not mentioned in the PDF.
 
 ---
 
-### ✅ After Guardrails
+###  After Guardrails
 
 **Improved Answer:**  
 > **The answer is not available in the document.**
@@ -137,7 +137,7 @@ No lies. No fluff. Just facts—or silence.
 
 ---
 
-## 🎯 Summary
+##  Summary
 
 | Issue | Solution |
 |-----|---------|
@@ -148,7 +148,7 @@ No lies. No fluff. Just facts—or silence.
 
 ---
 
-## 🧠 Key Takeaway
+##  Key Takeaway
 
 A good LLM talks well.  
 A **reliable LLM knows when to shut up**.
