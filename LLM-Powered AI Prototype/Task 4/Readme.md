@@ -1,7 +1,7 @@
 # Task 4 – AI System Architecture  
 
 
-## 📌 Problem Statement
+## Problem Statement
 Design a **production-ready AI assistant** for enterprise internal use that allows employees to query uploaded PDFs or internal documents and get answers strictly grounded in the source material.  
 
 The system must address:  
@@ -14,7 +14,7 @@ The system must address:
 ---
 
 
-## 📌 Overview
+## Overview
 
 
 This task involves designing an AI assistant for internal enterprise use.  
@@ -88,13 +88,13 @@ The architecture emphasizes **reliability, transparency, and maintainability**, 
 
 ---
 
-## 🔁 End-to-End Workflow
+## End-to-End Workflow
 
 User → Upload PDF → Text Extraction → Chunking → Embeddings (MiniLM) → FAISS Vector Search → Context Injection → LLM Generation → Answer + Source Reference  
 
 ---
 
-## 🖼️ System Diagram
+##  System Diagram
 <p align="center">
   <img src="AI-TASK .jpeg" width="700">
 </p>
@@ -102,7 +102,7 @@ User → Upload PDF → Text Extraction → Chunking → Embeddings (MiniLM) →
 
 ---
 
-## 🎯 Key Design Choices
+## Key Design Choices
 
 | Component         | Choice              | Reason                                         |
 |------------------|------------------|-----------------------------------------------|
@@ -116,7 +116,7 @@ User → Upload PDF → Text Extraction → Chunking → Embeddings (MiniLM) →
 
 ---
 
-## 📦 Deliverables
+##  Deliverables
 
 - Fully functional AI PDF Question Answering system  
 - Modular, readable Python code  
@@ -124,7 +124,7 @@ User → Upload PDF → Text Extraction → Chunking → Embeddings (MiniLM) →
 - Monitoring, feedback loop, and cost-control features  
 - Assessment-ready README with diagram and trade-offs  
 
-## 🚀 Deployment & Live Demo
+##  Deployment & Live Demo
 
 - **Live Demo:** [Streamlit Cloud Link](https://ml-engineer-assessment-mt5l9ai3jmk82s2hqdndym.streamlit.app/)  
 - **Local Run Instructions:**
