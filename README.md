@@ -1,224 +1,118 @@
-# 📘 AI PDF Question Answering System (RAG Pipeline)
+## 📌 Task Overview
 
-## Overview
+This repository contains my submission for the **Practical Assessment – AI Prototyping Engineer**.  
+The project focuses on building a **production-grade LLM-powered AI system** with strong emphasis on  
+**retrieval grounding, hallucination control, modular design, and enterprise readiness**.
 
-This project implements an **AI-powered PDF Question Answering system** using a **Retrieval Augmented Generation (RAG)** pipeline.
-
-Users can upload a PDF, ask natural language questions, and receive answers that are **strictly grounded in the document content**.  
-The system retrieves relevant text chunks using **FAISS**, generates answers using **FLAN-T5 (local)** or **OpenAI (optional)**, highlights the most reliable source snippet, maintains chat memory, and collects user feedback.
-
-The solution is built primarily using **open-source technologies**, making it cost-efficient and suitable for **enterprise internal deployments**.
+Each task is implemented with clear design justification and working code.
 
 ---
 
-## ✨ Key Features
+## 🧠 Task 1: LLM-Powered AI Prototype (Mandatory)
 
-- PDF ingestion and text extraction  
-- Chunking with overlap for semantic continuity  
-- SentenceTransformer embeddings (MiniLM)  
-- FAISS vector database (local)  
-- Answer generation using FLAN-T5 (local) or OpenAI (optional)  
-- Best-snippet selection using similarity score  
-- Chat memory (multi-turn Q&A)  
-- Feedback loop (Helpful / Not Helpful)  
-- Similarity-threshold guardrails to reduce hallucinations  
-- Local index persistence  
-- Optional document summarization  
+### Prototype Implemented
+**Chat with PDFs (RAG-based Question Answering System)**
 
----
+### Key Capabilities
+- PDF ingestion and text extraction using PyPDF  
+- Text chunking with overlap for semantic continuity  
+- Dense embeddings using SentenceTransformers (MiniLM)  
+- Vector storage and retrieval using FAISS  
+- Context-aware answer generation using FLAN-T5 (local) or OpenAI (optional)  
+- Interactive user interface built with Streamlit  
 
-## 🏗️ High-Level Architecture
+### Deliverables
+- Fully working end-to-end prototype  
+- Modular and readable code (`app.py`)  
+- Clear explanation of design choices  
 
-### Document Processing Flow
-User
-→ Streamlit UI
-→ PDF Upload
-→ Text Extraction (PyPDF)
-→ Chunking
-→ Embeddings (MiniLM)
-→ FAISS Vector Database
-
-
-### Question Answering Flow
-User Question
-→ Question Embedding
-→ FAISS Similarity Search (Top-K + Threshold)
-→ Context + Chat Memory Injection
-→ LLM (FLAN-T5 / OpenAI)
-→ Answer + Best Snippet + Feedback
-
-
+📄 **Detailed implementation and explanation available in this repository**
 
 ---
 
-## 🧠 TASK 1 – LLM Powered Prototype
+## 🛡️ Task 2: Hallucination & Quality Control
 
-### Prototype Chosen
-**Chat with PDFs**
-
-### Components
-
-#### LLM
-- `google/flan-t5-small` (local, default)
-- OpenAI GPT models (optional)
-
-#### RAG Stack
-- SentenceTransformers (`all-MiniLM-L6-v2`)
-- FAISS (`IndexFlatIP` with cosine similarity)
-
-#### Chunking Strategy
-- Chunk size: `500`
-- Overlap: `100`
-
-#### Prompt Engineering
-- Retrieved context injected into the prompt
-- Page references included
-- Strict answer constraints enforced
-- Chat history appended for continuity
-
-#### User Interface
-- Streamlit
-
-### Design Choices
-
-- **MiniLM**: Lightweight, fast, CPU-friendly embeddings  
-- **FAISS**: Free, local, high-performance vector search  
-- **Streamlit**: Rapid prototyping with minimal boilerplate  
-- **FLAN-T5**: Fully open-source and controllable generation model  
-
----
-
-## 🛡️ TASK 2 – Hallucination & Quality Control
-
-### Causes of Hallucination
-
-1. Weak similarity matches during retrieval  
-2. LLM prior knowledge overriding document content  
-3. Missing information in the uploaded PDF  
-4. Over-short or unconstrained answers  
-
+### Problem Addressed
+LLMs may generate **confident but incorrect answers** when context is weak or missing.
 
 ### Guardrails Implemented
+- **Similarity Threshold Guardrail**  
+  Stops answer generation if retrieved chunks are not relevant enough.
+- **Source-Grounded Prompt Constraint**  
+  Forces the model to answer strictly from retrieved document content.
 
-#### Guardrail 1 – Similarity Threshold
+### Outcome
+- Prevented hallucinated answers  
+- Improved trust, transparency, and answer reliability  
 
-Low-relevance chunks are discarded before answer generation.
-
-### Behavior
-
-- Chunks below the similarity threshold are ignored  
-- If no chunk crosses the threshold, answer generation is skipped  
-- The user is asked to rephrase the question  
-
-This mechanism prevents **low-confidence, irrelevant, or fabricated answers**.
-
-
-
-#### Guardrail 2 – Source-Grounded Prompt Constraint
-
-The prompt strictly enforces **document-only answering**.
-
-### Prompt Rule
-
-> If the answer is not present, say:  
-> **"The answer is not available in the document."**
-
-This ensures the model does **not hallucinate** when relevant information is missing from the PDF.
-
-
-## 📊 Improved Response Behavior
-
-### Without Guardrails
-
-- The LLM may generate a **confident but incorrect explanation**
-
-### With Guardrails Enabled
-
-- **"The answer is not available in the document."**
-
-Responses are **transparent, grounded, and source-aware**.
+📄 **Guardrail logic implemented directly in the RAG pipeline**
 
 ---
 
-## TASK 3 – Rapid Iteration Challenge
+## ⚡ Task 3: Rapid Iteration Challenge
 
 ### Advanced Capability Added
-
 **Chat Memory + Feedback Loop**
 
 ### Why This Choice
-
-* Improves conversational flow
-* Enables follow-up questions
-* Simulates enterprise assistant behavior
+- Enables conversational, multi-turn Q&A  
+- Mimics real enterprise AI assistant behavior  
+- Allows qualitative evaluation of responses  
 
 ### Implementation
-
-* Last 4 chat turns injected into the prompt
-* User feedback stored using Streamlit session state
-
-python
-st.session_state.chat_history
-st.session_state.feedback
-
+- Last 4 chat turns injected into the prompt  
+- User feedback collected using Streamlit session state  
 
 ### Trade-offs
+- Increased prompt length  
+- Slight increase in response latency  
 
-* Increased prompt length
-* Slight latency increase
+📄 **Memory and feedback logic implemented in `app.py`**
 
-### Limitations
+---
 
-* Memory is session-based (not persistent across restarts)
+## 🏢 Task 4: AI System Architecture (Enterprise Design)
+
+### System Designed
+**Enterprise-Ready Internal AI Assistant**
+
+### Architecture Covers
+- Secure document ingestion  
+- Embedding and vector database selection (FAISS)  
+- Modular LLM orchestration (local + API-based)  
+- Cost control via local inference and index persistence  
+- Monitoring via feedback and similarity scores  
+- Future-ready retraining and scalability strategy  
+
+📄 **Architecture explanation included in README with system flow**
+
+---
+
+## 🛠️ Tech Stack
+
+- Python  
+- Streamlit  
+- SentenceTransformers  
+- FAISS  
+- Hugging Face Transformers (FLAN-T5)  
+- OpenAI API (optional)  
+- NumPy, PyPDF  
+
+---
+
+## 🗂️ Notes
+
+- Each task maps directly to assessment requirements  
+- Code is modular, readable, and reproducible  
+- The system avoids black-box AutoML tools  
+- Designed with real-world deployment constraints in mind  
+
+---
+
+## 👤 Author
+
+**Siddharth Kumar**  
+MCA (AI & ML)  
+AI Prototyping Engineer | RAG Systems | LLM Applications
 
 
-
-🏢 TASK 4 – AI System Architecture (Enterprise Design)
-Architecture Overview
-User
- │
- ▼
-Streamlit UI
- │
- ▼
-PDF Ingestion & Parsing
- │
- ▼
-Chunking Engine
- │
- ▼
-Embedding Model (MiniLM)
- │
- ▼
-FAISS Vector Database
- │
- ▼
-Top-K Retrieval + Thresholding
- │
- ▼
-Prompt Builder (Context + Memory)
- │
- ▼
-LLM (FLAN-T5 / OpenAI)
- │
- ▼
-Answer + Source Attribution
-
-Enterprise Considerations
-Data Ingestion
-Secure PDF upload
-Chunk-level metadata with page references
-Vector Database Choice
-FAISS for local, cost-efficient deployment
-Easily replaceable with Pinecone / Weaviate
-LLM Orchestration
-Modular generation layer
-Supports open-source and API-based models
-Cost Control
-Local embeddings and indexing
-Optional OpenAI usage
-Index persistence avoids re-embedding
-Monitoring & Evaluation
-User feedback collection
-Similarity score inspection
-Source attribution for trust validation
