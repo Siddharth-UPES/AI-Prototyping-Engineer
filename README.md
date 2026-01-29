@@ -113,6 +113,3 @@ LLMs may generate **confident but incorrect answers** when context is weak or mi
 
 **Siddharth Kumar**  
 MCA (AI & ML)  
-AI Prototyping Engineer | RAG Systems | LLM Applications
-
-
