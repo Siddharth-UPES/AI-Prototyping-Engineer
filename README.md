@@ -140,21 +140,37 @@ This ensures the model does **not hallucinate** when relevant information is mis
 
 Responses are **transparent, grounded, and source-aware**.
 
-⚡ TASK 3 – Rapid Iteration Challenge
-Advanced Capability Added
-Chat Memory + Feedback Loop
-Why This Choice
-Improves conversational continuity
-Enables follow-up questions
-Mimics real enterprise assistant behavior
-Implementation
-Last 4 chat turns injected into the prompt
-User feedback stored using Streamlit session state
-Trade-offs
-Increased prompt length
-Slight latency increase
-Limitations
-Memory is session-based (not persistent across restarts)
+## TASK 3 – Rapid Iteration Challenge
+
+### Advanced Capability Added
+
+**Chat Memory + Feedback Loop**
+
+### Why This Choice
+
+* Improves conversational flow
+* Enables follow-up questions
+* Simulates enterprise assistant behavior
+
+### Implementation
+
+* Last 4 chat turns injected into the prompt
+* User feedback stored using Streamlit session state
+
+python
+st.session_state.chat_history
+st.session_state.feedback
+
+
+### Trade-offs
+
+* Increased prompt length
+* Slight latency increase
+
+### Limitations
+
+* Memory is session-based (not persistent across restarts)
+
 
 
 🏢 TASK 4 – AI System Architecture (Enterprise Design)
