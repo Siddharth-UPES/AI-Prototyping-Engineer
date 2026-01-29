@@ -1,0 +1,14 @@
+streamlit==1.26.0
+pypdf==3.16.0
+sentence-transformers==2.2.2
+transformers==4.44.2
+torch==2.10.0
+torchvision==0.15.2
+faiss-cpu==1.13.2
+numpy==1.25.2
+openai==0.27.9
+tqdm
+pandas
+requests
+protobuf
+typing-extensions
