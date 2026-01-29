@@ -3,7 +3,7 @@
 
 ---
 
-## 📌 Overview
+## Overview
 
 This task implements a **working LLM-powered AI prototype** using a  
 **Retrieval Augmented Generation (RAG)** architecture.
@@ -16,7 +16,7 @@ reduce hallucinations, and maintain transparency.
 
 ---
 
-## ✅ Prototype Selected
+## Prototype Selected
 
 **Chat with PDFs**
 
@@ -27,9 +27,9 @@ Other options provided in the task:
 
 ---
 
-## ⚙️ System Components
+## System Components
 
-### 🧠 Large Language Model (LLM)
+### Large Language Model (LLM)
 
 - **Local (Default):** `google/flan-t5-small`
 - **Optional:** OpenAI GPT models  
@@ -41,7 +41,7 @@ Other options provided in the task:
 
 ---
 
-### 🔍 Retrieval Augmented Generation (RAG)
+### Retrieval Augmented Generation (RAG)
 
 - **Embedding Model:** `all-MiniLM-L6-v2`
 - **Vector Database:** FAISS (local, in-memory + persisted)
@@ -53,7 +53,7 @@ Other options provided in the task:
 
 ---
 
-### ✂️ Chunking Strategy
+### Chunking Strategy
 
 - **Chunk size:** 500 characters  
 - **Overlap:** 100 characters  
@@ -65,7 +65,7 @@ Other options provided in the task:
 
 ---
 
-### 🧾 Prompt Engineering
+### Prompt Engineering
 
 The prompt enforces **strict document grounding**:
 
@@ -81,7 +81,7 @@ This ensures reliable, transparent, and trustworthy responses.
 
 ---
 
-### 🖥️ User Interface
+###  User Interface
 
 - **Framework:** Streamlit  
 
@@ -92,7 +92,7 @@ This ensures reliable, transparent, and trustworthy responses.
 
 ---
 
-## 🔁 End-to-End Workflow
+## End-to-End Workflow
 
 User  
 → Upload PDF  
@@ -106,7 +106,7 @@ User
 
 ---
 
-## 🎯 Design Choices Summary
+##  Design Choices Summary
 
 | Component | Choice | Reason |
 |---------|-------|--------|
@@ -118,7 +118,7 @@ User
 
 ---
 
-## 📦 Deliverables
+##  Deliverables
 
 - Fully functional LLM-powered prototype  
 - Modular and readable Python code  
