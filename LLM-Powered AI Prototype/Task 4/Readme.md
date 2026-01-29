@@ -1,10 +1,24 @@
 # Task 4 – AI System Architecture  
 
+
+## 📌 Problem Statement
+Design a **production-ready AI assistant** for enterprise internal use that allows employees to query uploaded PDFs or internal documents and get answers strictly grounded in the source material.  
+
+The system must address:  
+- Secure and efficient **data ingestion**  
+- High-performance **semantic search**  
+- **LLM orchestration** for accurate, context-aware answers  
+- **Cost control** and optional API usage  
+- **Monitoring, feedback, and evaluation** for real-world deployment  
+
+---
+
+
 ## 📌 Overview
 
-This task involves designing a **production-ready AI assistant** for enterprise internal use.  
-The assistant allows users to query uploaded PDFs or internal documents and get answers strictly grounded in the source material.  
-The architecture emphasizes **reliability, cost efficiency, monitoring, and modularity**.
+
+This task involves designing an AI assistant for internal enterprise use.  
+The architecture emphasizes **reliability, transparency, and maintainability**, combining **document retrieval**, **LLM generation**, and **feedback loops** to ensure high-quality, source-grounded responses.
 
 ---
 
@@ -76,7 +90,7 @@ The architecture emphasizes **reliability, cost efficiency, monitoring, and modu
 
 ## 🔁 End-to-End Workflow
 
-
+User → Upload PDF → Text Extraction → Chunking → Embeddings (MiniLM) → FAISS Vector Search → Context Injection → LLM Generation → Answer + Source Reference  
 
 ---
 
@@ -107,5 +121,17 @@ The architecture emphasizes **reliability, cost efficiency, monitoring, and modu
 - Enterprise-ready architecture design  
 - Monitoring, feedback loop, and cost-control features  
 - Assessment-ready README with diagram and trade-offs  
+
+## 🚀 Deployment & Live Demo
+
+- **Live Demo:** [Streamlit Cloud Link](https://ml-engineer-assessment-mt5l9ai3jmk82s2hqdndym.streamlit.app/)  
+- **Local Run Instructions:**
+```bash
+git clone <repo-url>
+cd task4_ai_pdf_qa
+pip install -r requirements.txt
+streamlit run app.py
+
+
 
   
