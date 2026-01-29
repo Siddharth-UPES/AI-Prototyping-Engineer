@@ -95,10 +95,9 @@ User → Upload PDF → Text Extraction → Chunking → Embeddings (MiniLM) →
 ---
 
 ## 🖼️ System Diagram
-
-## 🖼️ System Diagram
-
-![Enterprise AI System Architecture](AI-TASK.jpeg)
+<p align="center">
+  <img src="AI-TASK.jpeg" width="700">
+</p>
 
 
 ---
