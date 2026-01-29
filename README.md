@@ -1,302 +1,103 @@
-# README Structure 
+# AI PDF Question Answering System (RAG Pipeline)
 
-## 1. Project Overview
+## Overview
 
-Explain:
+This project implements an AI-powered PDF Question Answering system using a Retrieval Augmented Generation (RAG) pipeline.
 
-• What problem you solved
-• Which prototype you built (Chat with PDFs)
-• High-level RAG flow
+Users can upload a PDF, ask natural language questions, and receive answers grounded strictly in the document. The system retrieves relevant chunks using FAISS, generates answers using FLAN-T5 (or optional OpenAI), highlights the most reliable source snippet, maintains chat memory, and collects user feedback.
 
-Example:
-
-“I implemented an LLM-powered PDF Question Answering system using RAG with FAISS and FLAN-T5…”
+The stack is primarily open-source, making it cost-efficient and suitable for enterprise internal deployments.
 
 ---
 
-## 2. TASK 1 – LLM Powered Prototype
+## Key Features
 
-Here you explicitly map requirements:
+• PDF ingestion and text extraction  
+• Chunking with overlap for semantic continuity  
+• SentenceTransformer embeddings (MiniLM)  
+• FAISS vector database (local)  
+• Answer generation using FLAN-T5 (local) or OpenAI (optional)  
+• Best-snippet selection using similarity score  
+• Chat memory (multi-turn Q&A)  
+• Feedback loop (Helpful / Not Helpful)  
+• Similarity threshold guardrails to reduce hallucinations  
+• Local index persistence  
+• Optional document summarization  
+
+---
+
+## High-Level Architecture
+
+User → Streamlit UI  
+→ PDF Upload  
+→ Text Extraction (PyPDF)  
+→ Chunking  
+→ Embeddings (MiniLM)  
+→ FAISS Vector DB  
+
+When a question is asked:
+
+Question → Embedding  
+→ FAISS Similarity Search (Top-K + Threshold)  
+→ Context + Chat Memory Injection  
+→ LLM (FLAN-T5 / OpenAI)  
+→ Answer + Best Snippet + Feedback  
+
+---
+
+## TASK 1 – LLM Powered Prototype
 
 ### Prototype Chosen
-
 Chat with PDFs
 
 ### Components
 
-LLM:
+LLM  
+• google/flan-t5-small (local, default)  
+• OpenAI (optional)
 
-* FLAN-T5 (local)
-* Optional OpenAI
+RAG  
+• SentenceTransformers (all-MiniLM-L6-v2)  
+• FAISS (IndexFlatIP)
 
-RAG:
+Chunking  
+• Chunk size: 500  
+• Overlap: 100  
 
-* SentenceTransformers embeddings
-* FAISS vector DB
+Prompt Engineering  
+• Retrieved context injected  
+• Page references included  
+• Technical constraints applied  
+• Chat history appended  
 
-Chunking:
+UI  
+• Streamlit
 
-* 500 size
-* 100 overlap
+### Design Choices
 
-Prompt Engineering:
-
-* Context-injected prompts
-* Page references
-* Technical constraints
-
-UI:
-
-* Streamlit
-
-Then explain **why** you chose:
-
-• MiniLM → lightweight
-• FAISS → free + fast
-• Streamlit → rapid prototyping
-
-This satisfies Task 1.
+• MiniLM: lightweight, fast, CPU-friendly  
+• FAISS: free, local, high-performance vector search  
+• Streamlit: rapid prototyping with minimal boilerplate  
+• FLAN-T5: fully open-source generation model  
 
 ---
 
-## 3. TASK 2 – Hallucination & Quality Control
-
-Very important section.
-
-You already implemented:
+## TASK 2 – Hallucination & Quality Control
 
 ### Causes of Hallucination
 
-Explain:
-
-1. Weak similarity matches
-2. LLM prior knowledge
-3. Missing document info
-4. Over-short answers
+1. Weak similarity matches  
+2. LLM prior knowledge overriding document content  
+3. Missing information in PDF  
+4. Over-short or unconstrained answers  
 
 ---
 
-### Guardrails Implemented (at least 2)
+### Guardrails Implemented
 
-Show explicitly:
+#### Guardrail 1 – Similarity Threshold
 
-### Guardrail 1 – Similarity Threshold
+Weak chunks are discarded:
 
 ```python
 SIM_THRESHOLD = 0.35
-```
-
-Stops weak context.
-
----
-
-### Guardrail 2 – Source Grounding
-
-Best snippet selection:
-
-```python
-best = max(retrieved, key=lambda x: x["score"])
-```
-
-Answer tied to strongest source.
-
----
-
-### Guardrail 3 – Prompt Constraints
-
-Answer only from context.
-
----
-
-### Example Improvement
-
-Before:
-LLM gives random answer.
-
-After:
-System blocks response or highlights Snippet 2 as source.
-
-This completes Task 2.
-
----
-
-## 4. TASK 3 – Rapid Iteration
-
-You chose:
-
-✅ Feedback Loop
-✅ Chat Memory
-
-Explain:
-
-### Why
-
-Feedback:
-Allows continuous quality improvement.
-
-Memory:
-Enables follow-up questions.
-
----
-
-### Implementation
-
-Memory:
-
-```
-st.session_state.chat_history
-```
-
-Feedback:
-
-```
-st.session_state.feedback
-```
-
----
-
-### Trade-offs
-
-• Stored only in session
-• No persistence
-• Manual review needed
-
----
-
-### Limitations
-
-• No auto retraining
-• No database storage
-
-This satisfies Task 3.
-
----
-
-## 5. TASK 4 – Enterprise Architecture
-
-This is conceptual + diagram.
-
-Include:
-
-### Architecture Diagram (ASCII is OK)
-
-```
-User
- ↓
-Streamlit UI
- ↓
-PDF Loader
- ↓
-Chunking
- ↓
-Embeddings (MiniLM)
- ↓
-FAISS Vector DB
- ↓
-Retriever
- ↓
-LLM (FLAN-T5 / OpenAI)
- ↓
-Answer + Feedback
-```
-
----
-
-Then explain:
-
-### Data Ingestion
-
-PDF upload → PyPDF → chunks
-
-### Vector DB
-
-FAISS (local)
-
-Why:
-• Free
-• Fast
-• On-prem friendly
-
----
-
-### LLM Orchestration
-
-Retriever → Prompt → Generator
-
----
-
-### Cost Control
-
-• Local models
-• Threshold filtering
-• Top-K
-• Cached embeddings
-
----
-
-### Monitoring & Evaluation
-
-• Similarity scores
-• Best snippet
-• User feedback
-
-This satisfies Task 4.
-
----
-
-## 6. How to Run
-
-Commands.
-
----
-
-## 7. Future Improvements
-
-Multi-doc
-Auth
-Dashboard
-Persistent feedback
-
----
-
-# Important Interview Reality
-
-They DO NOT want:
-
-❌ Separate README per task
-❌ Scattered explanations
-
-They want:
-
-✅ One story
-✅ One system
-✅ One README
-
-Your project already integrates everything.
-
----
-
-## Final Answer
-
-👉 Create **ONE README.md**
-
-Inside it:
-
-• Task 1 section
-• Task 2 section
-• Task 3 section
-• Task 4 section
-
-That’s it.
-
----
-
-If you want next, I can help you with:
-
-✅ README architecture diagram image
-✅ Submission checklist
-✅ HR explanation
-✅ Viva questions
-✅ GitHub description
-
-Just tell me 👍
