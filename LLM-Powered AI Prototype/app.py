@@ -12,7 +12,7 @@ from typing import List, Dict, Tuple, Optional
 
 import streamlit as st
 from io import BytesIO
-from PyPDF2 import PdfReader
+from pypdf import PdfReader
 from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
@@ -444,3 +444,4 @@ if uploader:
 else:
 
     st.info("Upload a PDF from the left to start. You can also rebuild/clear a saved index in the sidebar.")
+
