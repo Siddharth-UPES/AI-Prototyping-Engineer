@@ -26,7 +26,8 @@ Each task is implemented with clear design justification and working code.
 - Modular and readable code (`app.py`)  
 - Clear explanation of design choices  
 
-📄 [Detailed explanation](Task%1/README.md)
+📄 For full details, see the [Task 1 README](task-1/README.md)
+
 
 ---
 
